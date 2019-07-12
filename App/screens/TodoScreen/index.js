@@ -16,18 +16,22 @@ export class TodoScreen extends PureComponent {
   constructor() {
     super();
     this.ref = firebase.firestore().collection("todos");
+    this.unsubscribe = null;
     this.state = {
       current: "",
       jobs: [],
       loading: true
     };
   }
+
   componentDidMount() {
     this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
   }
+
   componentWillUnmount() {
-    this.unsubscribe();
+    if (this.unsubscribe) this.unsubscribe();
   }
+  
   onCollectionUpdate = querySnapshot => {
     const todos = [];
     querySnapshot.forEach(doc => {

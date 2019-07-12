@@ -11,6 +11,7 @@ import styles from "./styles";
 
 export class SignInScreen extends PureComponent {
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <ImageBackground
         style={styles.container}
@@ -30,19 +31,23 @@ export class SignInScreen extends PureComponent {
           <TextInput
             style={styles.textInput}
             secureTextEntry={true}
-            placeholder="لطفا پسورد خود را وارد کنید"
+            placeholder="لطفا رمز عبور خود را وارد کنید"
           />
 
           <TouchableOpacity style={styles.button}>
-            <Text style={[styles.text, styles.buttonText]}>
-              ورود به اپلیکیشن
-            </Text>
+            <Text style={[styles.text, styles.whiteText]}>ورود</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={[styles.text, styles.passButton]}>
             <Text>فراموشی رمز عبور</Text>
           </TouchableOpacity>
         </View>
+        <TouchableOpacity style={[styles.text, styles.signIn]}>
+          <Text style={styles.whiteText}>Don't have an acount? </Text>
+          <TouchableOpacity onPress={() => navigate("SignUp")}>
+            <Text style={styles.signInText}>Sign Up</Text>
+          </TouchableOpacity>
+        </TouchableOpacity>
       </ImageBackground>
     );
   }

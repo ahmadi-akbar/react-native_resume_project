@@ -26,6 +26,12 @@ export class HomeScreen extends PureComponent {
         >
           <Text>SignIn</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigate("SignUp")}
+        >
+          <Text>SignUp</Text>
+        </TouchableOpacity>
       </View>
     );
   }

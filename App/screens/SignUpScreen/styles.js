@@ -7,29 +7,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: "12%"
   },
   content: {
-    padding: 15,
     backgroundColor: "white",
     borderRadius: 5,
     elevation: 5
   },
-  header: {
-    alignItems: "center"
-  },
-  headerText: {
-    fontSize: 26,
-    ...Platform.select({
-      ios: {
-        fontFamily: "IRANSansMobile",
-        fontWeight: "bold"
-      },
-      android: {
-        fontFamily: "IRANSansMobile_Bold"
-      }
-    })
-  },
   text: {
     fontSize: 14,
-    color: "#5256c9",
     fontFamily: "IRANSansMobile"
   },
   textInput: {
@@ -43,25 +26,21 @@ const styles = StyleSheet.create({
         fontFamily: "IRANSansMobile_Light"
       }
     }),
-    fontSize: 12,
+    fontSize: 14,
     borderWidth: 1,
-    borderColor: "rgba(0,0,0,0.1)",
-    borderRadius: 3,
+    borderColor: "transparent",
+    borderBottomColor: "pink",
     paddingRight: 10,
-    marginTop: 5,
-    marginBottom: 15
+    marginHorizontal: 10
   },
   button: {
     alignItems: "center",
     justifyContent: "center",
     height: 50,
     backgroundColor: "rgb(66,107,215)",
-    borderRadius: 30,
-    elevation: 3
-  },
-  passButton: {
-    marginTop: 15,
-    alignItems: "center"
+    borderRadius: 5,
+    elevation: 3,
+    marginTop: 25
   },
   whiteText: {
     color: "white"
