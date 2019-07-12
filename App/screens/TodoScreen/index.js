@@ -23,7 +23,6 @@ export class TodoScreen extends PureComponent {
     };
   }
   componentDidMount() {
-    console.tron.log("stateeff : ");
     this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
   }
   componentWillUnmount() {
