@@ -7,7 +7,7 @@ import {
   TextInput,
   ActivityIndicator
 } from "react-native";
-import firebase from "react-native-firebase";
+import fb from "react-native-firebase";
 import { connect } from "react-redux";
 import TodoCard from "../../components/TodoCard";
 import styles from "./styles";
@@ -15,23 +15,38 @@ import styles from "./styles";
 export class TodoScreen extends PureComponent {
   constructor() {
     super();
-    this.ref = firebase.firestore().collection("todos");
-    this.unsubscribe = null;
+    this.db = null;
+    this.fireUnsubscribe = null;
+    // this.authUnsubscribe = null;
     this.state = {
       current: "",
       jobs: [],
-      loading: true
+      loading: true,
+      isAuthenticated: false
     };
   }
 
   componentDidMount() {
-    this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
+    // this.authUnsubscribe = fb.auth().onAuthStateChanged();
+    fb.auth()
+      .signInAnonymously()
+      .then(data => {
+        let { uid } = data.user;
+        this.setState({
+          isAuthenticated: true
+        });
+        this.db = fb.firestore().collection("todos." + uid);
+        this.fireUnsubscribe = this.db.onSnapshot(this.onCollectionUpdate);
+      })
+      .catch(e => {
+        console.tron.log("e:", e);
+      });
   }
 
   componentWillUnmount() {
-    if (this.unsubscribe) this.unsubscribe();
+    if (this.fireUnsubscribe) this.fireUnsubscribe();
   }
-  
+
   onCollectionUpdate = querySnapshot => {
     const todos = [];
     querySnapshot.forEach(doc => {
@@ -43,7 +58,6 @@ export class TodoScreen extends PureComponent {
         complete
       });
     });
-    console.tron.log("todo : ", todos);
     this.setState({
       jobs: todos,
       loading: false
@@ -51,8 +65,8 @@ export class TodoScreen extends PureComponent {
   };
 
   render() {
-    let { jobs, loading } = this.state;
-    console.tron.log("state : ", this.state);
+    let { jobs, loading, isAuthenticated } = this.state;
+    if (!isAuthenticated) jobs = null;
 
     return (
       <View style={styles.container}>
@@ -78,15 +92,15 @@ export class TodoScreen extends PureComponent {
 
   _addJob = () => {
     let { jobs, current } = this.state;
-    console.tron.log("jobs : ", this.state);
-    this.ref
+    this.db
       .add({
         title: current,
         complete: false
       })
-      .then(value => console.tron.log("add :", value))
+      .then(data => console.tron.log("add :", data))
       .catch(e => console.tron.log("e : ", e));
-    // this.setState({ jobs: [temp, ...jobs], current: "" });
+    jobs.push(current);
+    this.setState({ jobs: jobs, current: "" });
   };
 }
 
