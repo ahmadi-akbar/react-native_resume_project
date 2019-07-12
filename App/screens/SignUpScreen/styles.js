@@ -13,10 +13,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 14,
-    fontFamily: "IRANSansMobile"
-  },
-  textInput: {
-    textAlign: "right",
+    color: "white",
     ...Platform.select({
       ios: {
         fontFamily: "IRANSansMobile",
@@ -25,8 +22,15 @@ const styles = StyleSheet.create({
       android: {
         fontFamily: "IRANSansMobile_Light"
       }
-    }),
-    fontSize: 14,
+    })
+  },
+  bigText: {
+    fontSize: 18,
+    fontWeight: "bold"
+  },
+  textInput: {
+    textAlign: "right",
+    color: "black",
     borderWidth: 1,
     borderColor: "transparent",
     borderBottomColor: "pink",
@@ -42,9 +46,6 @@ const styles = StyleSheet.create({
     elevation: 3,
     marginTop: 25
   },
-  whiteText: {
-    color: "white"
-  },
   signIn: {
     flexDirection: "row",
     justifyContent: "center",
@@ -54,10 +55,10 @@ const styles = StyleSheet.create({
     color: "pink",
     fontWeight: "bold"
   },
-  regText: {
-    fontSize: 18,
-    fontFamily: "IRANSansMobile",
-    color: "white"
+  bottom: {
+    position: "absolute",
+    bottom: 30,
+    alignSelf: "center"
   }
 });
 

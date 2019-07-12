@@ -6,34 +6,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingHorizontal: "12%"
   },
-  content: {
-    padding: 15,
-    backgroundColor: "white",
-    borderRadius: 5,
-    elevation: 5
-  },
-  header: {
-    alignItems: "center"
-  },
-  headerText: {
-    fontSize: 26,
-    ...Platform.select({
-      ios: {
-        fontFamily: "IRANSansMobile",
-        fontWeight: "bold"
-      },
-      android: {
-        fontFamily: "IRANSansMobile_Bold"
-      }
-    })
-  },
   text: {
     fontSize: 14,
-    color: "#5256c9",
-    fontFamily: "IRANSansMobile"
-  },
-  textInput: {
-    textAlign: "right",
+    color: "white",
     ...Platform.select({
       ios: {
         fontFamily: "IRANSansMobile",
@@ -42,29 +17,42 @@ const styles = StyleSheet.create({
       android: {
         fontFamily: "IRANSansMobile_Light"
       }
-    }),
-    fontSize: 12,
+    })
+  },
+  textInput: {
+    backgroundColor: "white",
+    color: "black",
+    textAlign: "right",
+    fontSize: 18,
     borderWidth: 1,
     borderColor: "rgba(0,0,0,0.1)",
-    borderRadius: 3,
-    paddingRight: 10,
-    marginTop: 5,
-    marginBottom: 15
+    paddingRight: 15,
+    marginBottom: 1,
+    elevation: 5
+  },
+  mailText: {
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10
+  },
+  passText: {
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10
   },
   button: {
     alignItems: "center",
-    justifyContent: "center",
-    height: 50,
+    padding: 15,
     backgroundColor: "rgb(66,107,215)",
-    borderRadius: 30,
-    elevation: 3
+    borderRadius: 5,
+    elevation: 5,
+    marginVertical: 15
   },
   passButton: {
-    marginTop: 15,
+    marginTop: 5,
     alignItems: "center"
   },
-  whiteText: {
-    color: "white"
+  bigText: {
+    fontSize: 18,
+    fontWeight: "bold"
   },
   signIn: {
     flexDirection: "row",
@@ -79,6 +67,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: "IRANSansMobile",
     color: "white"
+  },
+  bottom: {
+    position: "absolute",
+    bottom: 30,
+    alignSelf: "center"
   }
 });
 

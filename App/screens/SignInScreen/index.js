@@ -18,36 +18,32 @@ export class SignInScreen extends PureComponent {
         resizeMode="cover"
         source={require("../../assets/img/back.png")}
       >
-        <View style={styles.content}>
-          <View style={styles.header}>
-            <Text style={styles.headerText}>ورود</Text>
-          </View>
-          <Text style={styles.text}>ایمیل:</Text>
-          <TextInput
-            style={styles.textInput}
-            placeholder="لطفا ایمیل خود را وارد کنید"
-          />
-          <Text style={styles.text}>پسورد:</Text>
-          <TextInput
-            style={styles.textInput}
-            secureTextEntry={true}
-            placeholder="لطفا رمز عبور خود را وارد کنید"
-          />
+        <TextInput
+          style={[styles.text, styles.textInput, styles.mailText]}
+          placeholder="ایمیل"
+          keyboardType="email-address"
+        />
+        <TextInput
+          style={[styles.text, styles.textInput, styles.passText]}
+          secureTextEntry={true}
+          placeholder="رمز عبور"
+        />
 
-          <TouchableOpacity style={styles.button}>
-            <Text style={[styles.text, styles.whiteText]}>ورود</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={[styles.text, styles.passButton]}>
-            <Text>فراموشی رمز عبور</Text>
-          </TouchableOpacity>
-        </View>
-        <TouchableOpacity style={[styles.text, styles.signIn]}>
-          <Text style={styles.whiteText}>Don't have an acount? </Text>
-          <TouchableOpacity onPress={() => navigate("SignUp")}>
-            <Text style={styles.signInText}>Sign Up</Text>
-          </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Text style={[styles.text, styles.bigText]}>ورود</Text>
         </TouchableOpacity>
+
+        <TouchableOpacity style={styles.passButton}>
+          <Text style={styles.text}>رمز عبور را فراموش کردید؟</Text>
+        </TouchableOpacity>
+        <View style={styles.bottom}>
+          <View style={[styles.text, styles.signIn]}>
+            <Text style={styles.text}>Don't have an acount? </Text>
+            <TouchableOpacity onPress={() => navigate("SignUp")}>
+              <Text style={styles.signInText}>Sign Up</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </ImageBackground>
     );
   }

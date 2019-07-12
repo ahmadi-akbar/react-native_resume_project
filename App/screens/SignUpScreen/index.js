@@ -22,36 +22,37 @@ export class SignInScreen extends PureComponent {
         >
           <View style={styles.content}>
             <TextInput
-              style={styles.textInput}
+              style={[styles.text, styles.textInput]}
               placeholder="نام کاربری"
               keyboardType="numbers-and-punctuation"
             />
             <TextInput
-              style={styles.textInput}
+              style={[styles.text, styles.textInput]}
               placeholder="ایمیل"
               keyboardType="email-address"
             />
             <TextInput
-              style={styles.textInput}
+              style={[styles.text, styles.textInput]}
               secureTextEntry={true}
               placeholder="رمز عبور"
             />
             <TextInput
-              style={styles.textInput}
+              style={[styles.text, styles.textInput]}
               secureTextEntry={true}
               placeholder="تکرار رمز عبور"
             />
           </View>
           <TouchableOpacity style={styles.button}>
-            <Text style={styles.regText}>ثبت نام</Text>
+            <Text style={[styles.text, styles.bigText]}>ثبت نام</Text>
           </TouchableOpacity>
-
-          <TouchableOpacity style={[styles.text, styles.signIn]}>
-            <Text style={styles.whiteText}>already have acount? </Text>
-            <TouchableOpacity onPress={() => navigate("SignIn")}>
-              <Text style={styles.signInText}>Sign in</Text>
-            </TouchableOpacity>
-          </TouchableOpacity>
+          <View style={styles.bottom}>
+            <View style={[styles.text, styles.signIn]}>
+              <Text style={styles.text}>already have acount? </Text>
+              <TouchableOpacity onPress={() => navigate("SignIn")}>
+                <Text style={styles.signInText}>Sign in</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         </ImageBackground>
       </KeyboardAvoidingView>
     );
