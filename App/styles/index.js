@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    alignItems: "stretch",
     justifyContent: "center"
   },
   button: {
@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#f56363",
     borderRadius: 5,
-    padding: 15
+    padding: 15,
+    margin: 5
   }
 });
 

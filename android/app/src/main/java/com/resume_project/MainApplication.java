@@ -5,6 +5,7 @@ import android.app.Application;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.firestore.RNFirebaseFirestorePackage;
 // firebase-cloud-messaging
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
@@ -33,6 +34,7 @@ public class MainApplication extends Application implements ReactApplication {
       // firebase-cloud-messaging
       packages.add(new RNFirebaseMessagingPackage());
       packages.add(new RNFirebaseNotificationsPackage());
+      packages.add(new RNFirebaseFirestorePackage());
       return packages;
     }
 
