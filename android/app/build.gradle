@@ -174,6 +174,7 @@ dependencies {
     // firebase-cloud-messaging
     implementation 'com.google.firebase:firebase-messaging:19.0.1'
     implementation "com.google.firebase:firebase-firestore:19.0.0"
+    implementation 'com.google.firebase:firebase-auth:18.0.0'
 
     // JSC from node_modules
     if (useIntlJsc) {

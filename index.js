@@ -2,7 +2,7 @@
  * @format
  */
 if(__DEV__) {
-    import('./ReactotronConfig').then(() => console.log('Reactotron Configured'))
+    import('./ReactotronConfig');
   }
 
 import { AppRegistry } from "react-native";
