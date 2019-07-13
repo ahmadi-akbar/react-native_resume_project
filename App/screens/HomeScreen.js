@@ -10,6 +10,7 @@ export class HomeScreen extends PureComponent {
     return (
       <View style={styles.container}>
         <CustomButton title="Todo" onPress={() => navigate("Todo")} />
+        <CustomButton title="Weather" onPress={() => navigate("Weather")} />
         <CustomButton title="Temp" onPress={() => navigate("Temp")} />
         <CustomButton title="SignIn" onPress={() => navigate("SignIn")} />
         <CustomButton title="SignUp" onPress={() => navigate("SignUp")} />

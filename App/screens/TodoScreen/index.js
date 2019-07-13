@@ -30,6 +30,7 @@ export class TodoScreen extends PureComponent {
     fb.auth()
       .signInAnonymously()
       .then(data => {
+        console.tron.log("data : ", data);
         this.setState({
           isAuthenticated: true
         });
@@ -127,12 +128,13 @@ export class TodoScreen extends PureComponent {
 
   doAddJob = current => {
     let { jobs } = this.state;
-    this.db.add({
-      title: current,
-      complete: false
-    });
-    .then(data => console.tron.log("add :", data))
-    .catch(e => console.tron.log("e : ", e));
+    this.db
+      .add({
+        title: current,
+        complete: false
+      })
+      .then(data => console.tron.log("add :", data))
+      .catch(e => console.tron.log("e : ", e));
     jobs.push(current);
     this.setState({ jobs });
   };

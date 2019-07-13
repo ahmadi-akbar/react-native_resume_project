@@ -5,10 +5,12 @@ import TodoScreen from "./screens/TodoScreen";
 import SignInScreen from "./screens/SignInScreen";
 import SignUpScreen from "./screens/SignUpScreen";
 import ModalScreen from "./screens/ModalScreen";
+import WeatherProject from "./screens/WeatherProject";
 
 const screens = createStackNavigator(
   {
     Home: HomeScreen,
+    Weather: WeatherProject,
     Modal: ModalScreen,
     Temp: TempScreen,
     Todo: TodoScreen,

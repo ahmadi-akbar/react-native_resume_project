@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     height: 25
   },
   text: {
-    flex: 10,
+    flex: 8,
     fontSize: 18
   },
   done: {
