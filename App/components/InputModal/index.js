@@ -1,16 +1,25 @@
 import React, { PureComponent } from "react";
-import { Text, View } from "react-native";
+import { Text, View, TextInput } from "react-native";
 import CustomButton from "../CustomButton";
 import styles from "./styles";
 
 export default class CustomModal extends PureComponent {
+  state = {
+    current: ""
+  };
   render() {
     const { posCall, negCall, title, pos, neg } = this.props;
+    const { current } = this.state;
     return (
       <View style={styles.container}>
-        <View style={{ flex: 3 }} />
         <View style={styles.modal}>
           <Text style={styles.title}>{title}</Text>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Type here"
+            value={current}
+            onChangeText={text => this.setState({ current: text })}
+          />
           <View style={styles.row}>
             <CustomButton
               title={pos}
@@ -20,7 +29,7 @@ export default class CustomModal extends PureComponent {
             />
             <CustomButton
               title={neg}
-              onPress={negCall}
+              onPress={() => negCall(current)}
               style={[{ backgroundColor: "#1E88E5" }, styles.button]}
               textStyle={styles.text}
             />

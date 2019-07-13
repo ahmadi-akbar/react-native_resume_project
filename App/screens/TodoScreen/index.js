@@ -1,10 +1,11 @@
 import React, { PureComponent } from "react";
-import { Text, FlatList, View, ActivityIndicator, Image } from "react-native";
+import { Text, FlatList, View, ActivityIndicator } from "react-native";
 import fb from "react-native-firebase";
 import { connect } from "react-redux";
 import TodoCard from "../../components/TodoCard";
 import AddCard from "../../components/AddCard";
 import CustomModal from "../../components/CustomModal";
+import InputModal from "../../components/InputModal";
 import styles from "./styles";
 
 export class TodoScreen extends PureComponent {
@@ -66,7 +67,7 @@ export class TodoScreen extends PureComponent {
 
     return (
       <View style={styles.container}>
-        {confirm}
+        {confirm && <View style={styles.overlay}>{confirm}</View>}
         <View style={styles.header}>
           <Text style={styles.headerText}>List of Jobs</Text>
         </View>
@@ -78,31 +79,48 @@ export class TodoScreen extends PureComponent {
           )}
         />
 
-        <AddCard title="New todo" onPress={this._addJob} />
+        <AddCard title="New todo" onPress={this.addJob} />
       </View>
     );
   }
   deleteJob = item => {
     this.setState({
       confirm: (
-        <View style={styles.overlay}>
-          <CustomModal
-            title="Are you sure?"
-            pos="Yes remove it"
-            posCall={() => {
-              item.doc.ref.delete();
-              this.setState({ confirm: null });
-            }}
-            neg="No cancel it"
-            negCall={() => this.setState({ confirm: null })}
-          />
-        </View>
+        <CustomModal
+          title="Are you sure?"
+          pos="Yes remove it"
+          posCall={() => {
+            item.doc.ref.delete();
+            this.setState({ confirm: null });
+          }}
+          neg="No cancel it"
+          negCall={() => this.setState({ confirm: null })}
+        />
       )
     });
   };
 
-  _addJob = () => {
-    let { jobs, current } = this.state;
+  addJob = () => {
+    this.setState({
+      confirm: (
+        <InputModal
+          title="Are ?"
+          pos="Cancel"
+          posCall={() => {
+            this.setState({ confirm: null });
+          }}
+          neg="Add"
+          negCall={text => {
+            this.doAddJob(text);
+            this.setState({ confirm: null });
+          }}
+        />
+      )
+    });
+  };
+
+  doAddJob = current => {
+    let { jobs } = this.state;
     this.db
       .add({
         title: current,
@@ -111,7 +129,7 @@ export class TodoScreen extends PureComponent {
       .then(data => console.tron.log("add :", data))
       .catch(e => console.tron.log("e : ", e));
     jobs.push(current);
-    this.setState({ jobs: jobs, current: "" });
+    this.setState({ jobs });
   };
 }
 

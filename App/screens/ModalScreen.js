@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Button, Text, View } from "react-native";
-import CustomModal from "../components/CustomModal";
+import { View } from "react-native";
+import InputModal from "../components/InputModal";
 
 export default class ModalTester extends Component {
   state = {
@@ -15,10 +15,10 @@ export default class ModalTester extends Component {
     const { goBack } = this.props.navigation;
     return (
       <View style={{ flex: 1 }}>
-        <CustomModal
-          title="Are you sure?"
-          pos="Yes remove it"
-          neg="No cancel it"
+        <InputModal
+          title="Are ?"
+          pos="Cancel"
+          neg="Add"
           negCall={() => goBack()}
         />
       </View>
