@@ -16,7 +16,7 @@ export class SignInScreen extends PureComponent {
       <ImageBackground
         style={styles.container}
         resizeMode="cover"
-        source={require("../../assets/img/back.png")}
+        source={require("../../assets/img/back.jpg")}
       >
         <TextInput
           style={[styles.text, styles.textInput, styles.mailText]}
