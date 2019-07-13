@@ -68,7 +68,12 @@ export class TodoScreen extends PureComponent {
     if (!isAuthenticated) jobs = null;
 
     return (
-      <AnimatableView animation="slideInUp" duration={3000} useNativeDriver style={styles.container}>
+      <AnimatableView
+        animation="slideInUp"
+        duration={3000}
+        useNativeDriver
+        style={styles.container}
+      >
         {confirm && <View style={styles.overlay}>{confirm}</View>}
         <View style={styles.header}>
           <Text style={styles.headerText}>List of Jobs</Text>
@@ -87,10 +92,8 @@ export class TodoScreen extends PureComponent {
   }
   deleteJob = item => {
     this.setState({
-      //Animatable.createAnimatableComponent(
       confirm: (
         <CustomModal
-          animation="zoomInUp"
           title="Are you sure?"
           pos="Yes remove it"
           posCall={() => {
@@ -111,6 +114,7 @@ export class TodoScreen extends PureComponent {
           title="Add new Todo"
           pos="Cancel"
           posCall={() => {
+            this.modalRef.bounce(1000);
             this.setState({ confirm: null });
           }}
           neg="Add"
