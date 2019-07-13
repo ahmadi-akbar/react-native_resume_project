@@ -30,11 +30,10 @@ export class TodoScreen extends PureComponent {
     fb.auth()
       .signInAnonymously()
       .then(data => {
-        let { uid } = data.user;
         this.setState({
           isAuthenticated: true
         });
-        this.db = fb.firestore().collection("todos." + uid);
+        this.db = fb.firestore().collection("todos." + data.user.uid);
         this.fireUnsubscribe = this.db.onSnapshot(this.onCollectionUpdate);
       })
       .catch(e => {
@@ -118,7 +117,7 @@ export class TodoScreen extends PureComponent {
           }}
           neg="Add"
           negCall={text => {
-            this.doAddJob(text);
+            if (text.trim() !== "") this.doAddJob(text);
             this.setState({ confirm: null });
           }}
         />
