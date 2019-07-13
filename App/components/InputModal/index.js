@@ -1,8 +1,9 @@
 import React, { PureComponent } from "react";
 import { Text, View, TextInput } from "react-native";
+import { createAnimatableComponent } from "react-native-animatable";
 import CustomButton from "../CustomButton";
 import styles from "./styles";
-
+const AnimatableView = createAnimatableComponent(View);
 export default class CustomModal extends PureComponent {
   state = {
     current: ""
@@ -12,7 +13,12 @@ export default class CustomModal extends PureComponent {
     const { current } = this.state;
     return (
       <View style={styles.container}>
-        <View style={styles.modal}>
+        <AnimatableView
+          animation="fadeInRight"
+          duration={1000}
+          useNativeDriver
+          style={styles.modal}
+        >
           <Text style={styles.title}>{title}</Text>
           <TextInput
             style={styles.textInput}
@@ -34,7 +40,7 @@ export default class CustomModal extends PureComponent {
               textStyle={styles.text}
             />
           </View>
-        </View>
+        </AnimatableView>
       </View>
     );
   }

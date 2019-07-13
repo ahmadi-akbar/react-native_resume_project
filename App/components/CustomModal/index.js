@@ -1,15 +1,22 @@
 import React, { PureComponent } from "react";
 import { Text, View } from "react-native";
+import { createAnimatableComponent } from "react-native-animatable";
 import CustomButton from "../CustomButton";
 import styles from "./styles";
-
+const AnimatableView = createAnimatableComponent(View);
 export default class CustomModal extends PureComponent {
   render() {
     const { posCall, negCall, title, pos, neg } = this.props;
     return (
       <View style={styles.container}>
         <View style={{ flex: 3 }} />
-        <View style={styles.modal}>
+        <AnimatableView
+          animation="slideInUp"
+          duration={1000}
+          useNativeDriver
+          View
+          style={styles.modal}
+        >
           <Text style={styles.title}>{title}</Text>
           <View style={styles.row}>
             <CustomButton
@@ -25,7 +32,7 @@ export default class CustomModal extends PureComponent {
               textStyle={styles.text}
             />
           </View>
-        </View>
+        </AnimatableView>
       </View>
     );
   }

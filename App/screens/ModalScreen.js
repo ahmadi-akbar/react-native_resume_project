@@ -3,14 +3,6 @@ import { View } from "react-native";
 import InputModal from "../components/InputModal";
 
 export default class ModalTester extends Component {
-  state = {
-    isModalVisible: false
-  };
-
-  toggleModal = () => {
-    this.setState({ isModalVisible: !this.state.isModalVisible });
-  };
-
   render() {
     const { goBack } = this.props.navigation;
     return (

@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { Text, FlatList, View, ActivityIndicator } from "react-native";
 import fb from "react-native-firebase";
+import { createAnimatableComponent } from "react-native-animatable";
 import { connect } from "react-redux";
 import TodoCard from "../../components/TodoCard";
 import AddCard from "../../components/AddCard";
@@ -8,6 +9,7 @@ import CustomModal from "../../components/CustomModal";
 import InputModal from "../../components/InputModal";
 import styles from "./styles";
 
+const AnimatableView = createAnimatableComponent(View);
 export class TodoScreen extends PureComponent {
   constructor() {
     super();
@@ -66,7 +68,7 @@ export class TodoScreen extends PureComponent {
     if (!isAuthenticated) jobs = null;
 
     return (
-      <View style={styles.container}>
+      <AnimatableView animation="slideInUp" duration={3000} useNativeDriver style={styles.container}>
         {confirm && <View style={styles.overlay}>{confirm}</View>}
         <View style={styles.header}>
           <Text style={styles.headerText}>List of Jobs</Text>
@@ -80,13 +82,15 @@ export class TodoScreen extends PureComponent {
         />
 
         <AddCard title="New todo" onPress={this.addJob} />
-      </View>
+      </AnimatableView>
     );
   }
   deleteJob = item => {
     this.setState({
+      //Animatable.createAnimatableComponent(
       confirm: (
         <CustomModal
+          animation="zoomInUp"
           title="Are you sure?"
           pos="Yes remove it"
           posCall={() => {
@@ -104,7 +108,7 @@ export class TodoScreen extends PureComponent {
     this.setState({
       confirm: (
         <InputModal
-          title="Are ?"
+          title="Add new Todo"
           pos="Cancel"
           posCall={() => {
             this.setState({ confirm: null });
