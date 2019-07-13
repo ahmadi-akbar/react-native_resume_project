@@ -4,9 +4,14 @@ import TempScreen from "./screens/TempScreen";
 import TodoScreen from "./screens/TodoScreen";
 import SignInScreen from "./screens/SignInScreen";
 import SignUpScreen from "./screens/SignUpScreen";
+import ModalScreen from "./screens/ModalScreen";
 
 const screens = createStackNavigator({
   Home: HomeScreen,
+  Modal: {
+    screen: ModalScreen,
+    navigationOptions: { header: null }
+  },
   Temp: TempScreen,
   Todo: {
     screen: TodoScreen,

@@ -20,7 +20,7 @@ export default class TodoCard extends PureComponent {
           </View>
           <Text style={[styles.text, complete && styles.done]}>{title}</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => doc.ref.delete()}>
+        <TouchableOpacity onPress={this.props.deleteJob}>
           <Image
             source={require("../../assets/img/delete.png")}
             style={styles.image}

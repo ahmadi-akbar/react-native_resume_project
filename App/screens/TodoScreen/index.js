@@ -10,6 +10,7 @@ import {
 import fb from "react-native-firebase";
 import { connect } from "react-redux";
 import TodoCard from "../../components/TodoCard";
+import CustomModal from "../../components/CustomModal";
 import styles from "./styles";
 
 export class TodoScreen extends PureComponent {
@@ -22,7 +23,8 @@ export class TodoScreen extends PureComponent {
       current: "",
       jobs: [],
       loading: true,
-      isAuthenticated: false
+      isAuthenticated: false,
+      confirm: null
     };
   }
 
@@ -65,30 +67,47 @@ export class TodoScreen extends PureComponent {
   };
 
   render() {
-    let { jobs, loading, isAuthenticated } = this.state;
+    let { jobs, loading, isAuthenticated, confirm } = this.state;
     if (!isAuthenticated) jobs = null;
 
     return (
       <View style={styles.container}>
+        {confirm}
         <View style={styles.header}>
           <Text style={styles.headerText}>List of Jobs</Text>
         </View>
+        {loading && <ActivityIndicator color="pink" size="large" />}
         <FlatList
           data={jobs}
-          renderItem={({ item }) => <TodoCard item={item} />}
+          renderItem={({ item }) => (
+            <TodoCard item={item} deleteJob={() => this.deleteJob(item)} />
+          )}
         />
-        {loading && <ActivityIndicator color="pink" size="large" />}
-        <TextInput
-          placeholder="type to add"
-          value={this.state.current}
-          onChangeText={text => this.setState({ current: text })}
-        />
-        <TouchableOpacity style={styles.button} onPress={this._addJob}>
+
+        <TouchableOpacity style={styles.button} onPress={this._temp}>
           <Text>Add Job</Text>
         </TouchableOpacity>
       </View>
     );
   }
+  deleteJob = item => {
+    this.setState({
+      confirm: (
+        <View style={styles.overlay}>
+          <CustomModal
+            title="Are you sure?"
+            pos="Yes remove it"
+            posCall={() => {
+              item.doc.ref.delete();
+              this.setState({ confirm: null });
+            }}
+            neg="No cancel it"
+            negCall={() => this.setState({ confirm: null })}
+          />
+        </View>
+      )
+    });
+  };
 
   _addJob = () => {
     let { jobs, current } = this.state;

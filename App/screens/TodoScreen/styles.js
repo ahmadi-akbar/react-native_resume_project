@@ -29,6 +29,14 @@ const styles = StyleSheet.create({
     borderColor: "transparent",
     borderBottomColor: "pink",
     borderWidth: 1
+  },
+  overlay: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    zIndex: 999
   }
 });
 

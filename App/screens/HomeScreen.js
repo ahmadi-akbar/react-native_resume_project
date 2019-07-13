@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { connect } from "react-redux";
+import CustomButton from "../components/CustomButton";
 import styles from "../styles";
 
 export class HomeScreen extends PureComponent {
@@ -8,30 +9,11 @@ export class HomeScreen extends PureComponent {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigate("Todo")}
-        >
-          <Text>Todo</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigate("Temp")}
-        >
-          <Text>Temp</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigate("SignIn")}
-        >
-          <Text>SignIn</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigate("SignUp")}
-        >
-          <Text>SignUp</Text>
-        </TouchableOpacity>
+        <CustomButton title="Todo" onPress={() => navigate("Todo")} />
+        <CustomButton title="Temp" onPress={() => navigate("Temp")} />
+        <CustomButton title="SignIn" onPress={() => navigate("SignIn")} />
+        <CustomButton title="SignUp" onPress={() => navigate("SignUp")} />
+        <CustomButton title="Modal" onPress={() => navigate("Modal")} />
       </View>
     );
   }
