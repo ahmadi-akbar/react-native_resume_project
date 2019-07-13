@@ -1,15 +1,33 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-  card: {
+  container: {
     flex: 1,
     flexDirection: "row",
+    alignItems: "center",
     justifyContent: "space-between",
-    padding: 10,
+    padding: 5,
     margin: 10,
     borderColor: "transparent",
     borderBottomColor: "pink",
     borderWidth: 1
+  },
+  card: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center"
+  },
+  image: {
+    width: 25,
+    height: 25
+  },
+  text: {
+    flex: 10,
+    fontSize: 18
+  },
+  done: {
+    color: "#909090",
+    textDecorationLine: "line-through"
   }
 });
 export default styles;
