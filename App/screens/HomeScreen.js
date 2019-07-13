@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { View } from "react-native";
 import { connect } from "react-redux";
 import CustomButton from "../components/CustomButton";
 import styles from "../styles";

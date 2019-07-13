@@ -114,7 +114,6 @@ export class TodoScreen extends PureComponent {
           title="Add new Todo"
           pos="Cancel"
           posCall={() => {
-            this.modalRef.bounce(1000);
             this.setState({ confirm: null });
           }}
           neg="Add"
@@ -129,13 +128,12 @@ export class TodoScreen extends PureComponent {
 
   doAddJob = current => {
     let { jobs } = this.state;
-    this.db
-      .add({
-        title: current,
-        complete: false
-      })
-      .then(data => console.tron.log("add :", data))
-      .catch(e => console.tron.log("e : ", e));
+    this.db.add({
+      title: current,
+      complete: false
+    });
+    .then(data => console.tron.log("add :", data))
+    .catch(e => console.tron.log("e : ", e));
     jobs.push(current);
     this.setState({ jobs });
   };

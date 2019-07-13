@@ -6,25 +6,18 @@ import SignInScreen from "./screens/SignInScreen";
 import SignUpScreen from "./screens/SignUpScreen";
 import ModalScreen from "./screens/ModalScreen";
 
-const screens = createStackNavigator({
-  Home: HomeScreen,
-  Modal: {
-    screen: ModalScreen,
-    navigationOptions: { header: null }
+const screens = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Modal: ModalScreen,
+    Temp: TempScreen,
+    Todo: TodoScreen,
+    SignIn: SignInScreen,
+    SignUp: SignUpScreen
   },
-  Temp: TempScreen,
-  Todo: {
-    screen: TodoScreen,
-    navigationOptions: { header: null }
-  },
-  SignIn: {
-    screen: SignInScreen,
-    navigationOptions: { header: null }
-  },
-  SignUp: {
-    screen: SignUpScreen,
-    navigationOptions: { header: null }
+  {
+    headerMode: "none"
   }
-});
+);
 
 export default createAppContainer(screens);
