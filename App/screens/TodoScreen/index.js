@@ -1,15 +1,9 @@
 import React, { PureComponent } from "react";
-import {
-  Text,
-  TouchableOpacity,
-  FlatList,
-  View,
-  TextInput,
-  ActivityIndicator
-} from "react-native";
+import { Text, FlatList, View, ActivityIndicator, Image } from "react-native";
 import fb from "react-native-firebase";
 import { connect } from "react-redux";
 import TodoCard from "../../components/TodoCard";
+import AddCard from "../../components/AddCard";
 import CustomModal from "../../components/CustomModal";
 import styles from "./styles";
 
@@ -84,9 +78,7 @@ export class TodoScreen extends PureComponent {
           )}
         />
 
-        <TouchableOpacity style={styles.button} onPress={this._temp}>
-          <Text>Add Job</Text>
-        </TouchableOpacity>
+        <AddCard title="New todo" onPress={this._addJob} />
       </View>
     );
   }
