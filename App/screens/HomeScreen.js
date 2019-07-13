@@ -9,11 +9,31 @@ export class HomeScreen extends PureComponent {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <CustomButton title="Todo" onPress={() => navigate("Todo")} />
-        <CustomButton title="Weather" onPress={() => navigate("Weather")} />
+        <View style={styles.row}>
+          <CustomButton
+            style={styles.button}
+            title="Todo"
+            onPress={() => navigate("Todo")}
+          />
+          <CustomButton
+            style={styles.button}
+            title="Weather"
+            onPress={() => navigate("Weather")}
+          />
+        </View>
+        <View style={styles.row}>
+          <CustomButton
+            style={styles.button}
+            title="SignIn"
+            onPress={() => navigate("SignIn")}
+          />
+          <CustomButton
+            style={styles.button}
+            title="SignUp"
+            onPress={() => navigate("SignUp")}
+          />
+        </View>
         <CustomButton title="Temp" onPress={() => navigate("Temp")} />
-        <CustomButton title="SignIn" onPress={() => navigate("SignIn")} />
-        <CustomButton title="SignUp" onPress={() => navigate("SignUp")} />
         <CustomButton title="Modal" onPress={() => navigate("Modal")} />
       </View>
     );

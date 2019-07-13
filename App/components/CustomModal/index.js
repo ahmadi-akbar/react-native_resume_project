@@ -12,7 +12,7 @@ export default class CustomModal extends PureComponent {
         <View style={{ flex: 3 }} />
         <AnimatableView
           animation="slideInUp"
-          duration={1000}
+          duration={500}
           useNativeDriver
           View
           style={styles.modal}

@@ -70,7 +70,7 @@ export class TodoScreen extends PureComponent {
     return (
       <AnimatableView
         animation="slideInUp"
-        duration={3000}
+        duration={2000}
         useNativeDriver
         style={styles.container}
       >
