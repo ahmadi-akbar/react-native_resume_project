@@ -7,7 +7,14 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: "center",
-    marginVertical: 20
+    borderWidth: 1,
+    borderTopWidth: 0,
+    borderColor: "#E0E0E0",
+    borderBottomLeftRadius: 15,
+    borderBottomRightRadius: 15,
+    paddingVertical: 10,
+    margin: -2,
+    marginBottom: 15
   },
   headerText: {
     fontSize: 25,
