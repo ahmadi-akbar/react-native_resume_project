@@ -67,8 +67,7 @@ export class TodoScreen extends PureComponent {
     let { jobs, loading, isAuthenticated, confirm } = this.state;
     if (!isAuthenticated) jobs = [];
     console.tron.log("state :", this.state);
-    if (jobs.length) empty = false;
-    // console.tron.log("state :", this.state);
+    if (jobs.length || loading) empty = false;
     return (
       <AnimatableView
         animation="slideInUp"
@@ -81,9 +80,7 @@ export class TodoScreen extends PureComponent {
           <Text style={styles.headerText}>List of Jobs</Text>
         </View>
         {loading && <ActivityIndicator color="pink" size="large" />}
-        {empty && !loading && (
-          <Text style={styles.empty}>You have not any task :(</Text>
-        )}
+        {empty && <Text style={styles.empty}>You have not any task :(</Text>}
         <FlatList
           data={jobs}
           renderItem={({ item }) => (
