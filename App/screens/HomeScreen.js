@@ -33,8 +33,8 @@ export class HomeScreen extends PureComponent {
             onPress={() => navigate("SignUp")}
           />
         </View>
-        <CustomButton title="Temp" onPress={() => navigate("Temp")} />
-        <CustomButton title="Modal" onPress={() => navigate("Modal")} />
+        {/* <CustomButton title="Temp" onPress={() => navigate("Temp")} /> */}
+        {/* <CustomButton title="Modal" onPress={() => navigate("Modal")} /> */}
       </View>
     );
   }

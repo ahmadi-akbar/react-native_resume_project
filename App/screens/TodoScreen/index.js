@@ -30,16 +30,15 @@ export class TodoScreen extends PureComponent {
     fb.auth()
       .signInAnonymously()
       .then(data => {
-        console.tron.log("data : ", data);
         this.setState({
           isAuthenticated: true
         });
         this.db = fb.firestore().collection("todos." + data.user.uid);
         this.fireUnsubscribe = this.db.onSnapshot(this.onCollectionUpdate);
-      })
-      .catch(e => {
-        console.tron.log("e:", e);
       });
+      // .catch(e => {
+      //   console.tron.log("e:", e);
+      // });
   }
 
   componentWillUnmount() {
@@ -111,7 +110,7 @@ export class TodoScreen extends PureComponent {
     this.setState({
       confirm: (
         <InputModal
-          title="Add new Todo"
+          title="Add new todo"
           pos="Cancel"
           posCall={() => {
             this.setState({ confirm: null });
@@ -132,9 +131,9 @@ export class TodoScreen extends PureComponent {
       .add({
         title: current,
         complete: false
-      })
-      .then(data => console.tron.log("add :", data))
-      .catch(e => console.tron.log("e : ", e));
+      });
+      // .then(data => console.tron.log("add :", data))
+      // .catch(e => console.tron.log("e : ", e));
     jobs.push(current);
     this.setState({ jobs });
   };

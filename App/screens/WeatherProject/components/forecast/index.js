@@ -5,7 +5,6 @@ import styles from "./style";
 
 export default class Forecast extends Component {
   render() {
-    console.log("forecast : ", this.props);
     const { main, description, temp, unit, icon } = this.props;
     return (
       <View style={{ height: 130, alignItems: "center" }}>

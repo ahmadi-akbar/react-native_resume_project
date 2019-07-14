@@ -14,18 +14,18 @@ export default class LocationButton extends Component {
     const { onGetCoordsFun } = this.props;
     geolocation.getCurrentPosition(
       pos => {
-        console.log("position : ", pos);
+        // console.log("position : ", pos);
         onGetCoordsFun(pos.coords.latitude, pos.coords.longitude);
       },
       err => {
-        console.log("err : ", err);
+        // console.log("err : ", err);
       },
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
     );
   };
 
   requestGPSPermission = async () => {
-    console.log("permission request ");
+    // console.log("permission request ");
     try {
       const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
@@ -38,9 +38,9 @@ export default class LocationButton extends Component {
         }
       );
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        console.log("we can use the camera");
+        // console.log("we can use the camera");
       } else {
-        console.log("Camera permission denied");
+        // console.log("Camera permission denied");
       }
     } catch (err) {
       console.warn(err);

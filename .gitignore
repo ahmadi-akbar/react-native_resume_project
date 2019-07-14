@@ -64,4 +64,7 @@ buck-out/
 *.jsbundle
 
 #keystore
-./android/gradle.properties
+android/gradle.properties
+
+#google api
+android/app/google-services.json

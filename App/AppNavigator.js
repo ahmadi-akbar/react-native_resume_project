@@ -11,8 +11,8 @@ const screens = createStackNavigator(
   {
     Home: HomeScreen,
     Weather: WeatherProject,
-    Modal: ModalScreen,
-    Temp: TempScreen,
+    // Modal: ModalScreen,
+    // Temp: TempScreen,
     Todo: TodoScreen,
     SignIn: SignInScreen,
     SignUp: SignUpScreen

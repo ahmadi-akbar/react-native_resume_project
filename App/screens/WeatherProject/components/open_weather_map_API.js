@@ -22,16 +22,16 @@ async function fetchForecast(url) {
   }
 }
 function getForecastByCoords(lat, lon) {
-  console.log(
-    `${API_STEM}lat=${lat}&lon=${lon}&units=${UNIT.C}&APPID=${WEATHER_API_KEY}`
-  );
+  // console.log(
+  //   `${API_STEM}lat=${lat}&lon=${lon}&units=${UNIT.C}&APPID=${WEATHER_API_KEY}`
+  // );
   return fetchForecast(
     `${API_STEM}lat=${lat}&lon=${lon}&units=${UNIT.C}&APPID=${WEATHER_API_KEY}`
   );
 }
 
 function getForecastByCityName(city) {
-  console.log(`${API_STEM}q=${city}&units=${UNIT.C}&APPID=${WEATHER_API_KEY}`);
+  // console.log(`${API_STEM}q=${city}&units=${UNIT.C}&APPID=${WEATHER_API_KEY}`);
   return fetchForecast(
     `${API_STEM}q=${city}&units=${UNIT.C}&APPID=${WEATHER_API_KEY}`
   );
