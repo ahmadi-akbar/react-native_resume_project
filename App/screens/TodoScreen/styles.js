@@ -41,6 +41,13 @@ const styles = StyleSheet.create({
   bottom: {
     position: "absolute",
     bottom: 0
+  },
+  empty: {
+    marginTop: 20,
+    textAlign: "center",
+    fontSize: 18,
+    fontWeight: "600",
+    color: "#ff5252"
   }
 });
 

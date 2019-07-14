@@ -36,9 +36,9 @@ export class TodoScreen extends PureComponent {
         this.db = fb.firestore().collection("todos." + data.user.uid);
         this.fireUnsubscribe = this.db.onSnapshot(this.onCollectionUpdate);
       });
-      // .catch(e => {
-      //   console.tron.log("e:", e);
-      // });
+    // .catch(e => {
+    //   console.tron.log("e:", e);
+    // });
   }
 
   componentWillUnmount() {
@@ -63,9 +63,12 @@ export class TodoScreen extends PureComponent {
   };
 
   render() {
+    let empty = true;
     let { jobs, loading, isAuthenticated, confirm } = this.state;
-    if (!isAuthenticated) jobs = null;
-
+    if (!isAuthenticated) jobs = [];
+    console.tron.log("state :", this.state);
+    if (jobs.length) empty = false;
+    // console.tron.log("state :", this.state);
     return (
       <AnimatableView
         animation="slideInUp"
@@ -78,6 +81,9 @@ export class TodoScreen extends PureComponent {
           <Text style={styles.headerText}>List of Jobs</Text>
         </View>
         {loading && <ActivityIndicator color="pink" size="large" />}
+        {empty && !loading && (
+          <Text style={styles.empty}>You have not any task :(</Text>
+        )}
         <FlatList
           data={jobs}
           renderItem={({ item }) => (
@@ -127,13 +133,12 @@ export class TodoScreen extends PureComponent {
 
   doAddJob = current => {
     let { jobs } = this.state;
-    this.db
-      .add({
-        title: current,
-        complete: false
-      });
-      // .then(data => console.tron.log("add :", data))
-      // .catch(e => console.tron.log("e : ", e));
+    this.db.add({
+      title: current,
+      complete: false
+    });
+    // .then(data => console.tron.log("add :", data))
+    // .catch(e => console.tron.log("e : ", e));
     jobs.push(current);
     this.setState({ jobs });
   };
