@@ -69,27 +69,36 @@ export class TodoScreen extends PureComponent {
     console.tron.log("state :", this.state);
     if (jobs.length || loading) empty = false;
     return (
-      <AnimatableView
-        animation="slideInUp"
-        duration={2000}
-        useNativeDriver
-        style={styles.container}
-      >
+      <View style={styles.container}>
         {confirm && <View style={styles.overlay}>{confirm}</View>}
-        <View style={styles.header}>
+        <AnimatableView
+          animation="slideInDown"
+          duration={1500}
+          useNativeDriver
+          style={styles.header}
+        >
           <Text style={styles.headerText}>List of Jobs</Text>
-        </View>
+        </AnimatableView>
         {loading && <ActivityIndicator color="pink" size="large" />}
         {empty && <Text style={styles.empty}>You have not any task :(</Text>}
-        <FlatList
-          data={jobs}
-          renderItem={({ item }) => (
-            <TodoCard item={item} deleteJob={() => this.deleteJob(item)} />
-          )}
-        />
-
-        <AddCard title="New todo" onPress={this.addJob} />
-      </AnimatableView>
+        <AnimatableView
+          animation="fadeIn"
+          delay={1500}
+          duration={1500}
+          useNativeDriver
+          style={{ flex: 1 }}
+        >
+          <FlatList
+            data={jobs}
+            renderItem={({ item }) => (
+              <TodoCard item={item} deleteJob={() => this.deleteJob(item)} />
+            )}
+          />
+        </AnimatableView>
+        <AnimatableView animation="slideInUp" duration={1500} useNativeDriver>
+          <AddCard title="New todo" onPress={this.addJob} />
+        </AnimatableView>
+      </View>
     );
   }
   deleteJob = item => {
